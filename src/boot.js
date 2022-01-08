@@ -14,6 +14,7 @@ export default class Boot extends Phaser.Scene {
     this.load.setPath('assets/sprites/');
     this.load.image('platform', 'platform.png');
     this.load.image('player', 'player.png');
+    this.load.image('button', 'button.png')
   }
 
   /**
@@ -21,6 +22,6 @@ export default class Boot extends Phaser.Scene {
    * nivel del juego
    */
   create() {
-    this.scene.start('level');
+    this.scene.start('menu');
   }
 }
