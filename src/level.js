@@ -31,6 +31,23 @@ export default class Level extends Phaser.Scene {
     const width = this.scale.width;
     const height = this.scale.height;
 
+    // TEMA MUSICA
+
+    // this.playList=["gameSong", "gameSong2", "gameSong3"];
+
+    // const configSound = {
+    //   mute: false,
+    //   volume: 0.3,
+    //   rate: 1,
+    //   detune: 0,
+    //   seek: 0,
+    //   loop: true,
+    //   delay: 0,
+    // };
+
+    // this.mainSong= this.sound.add(this.playList[this.actSong],configSound);
+    // this.mainSong.play();
+
     // CUSTOM BOUNDS
     this.physics.world.setBounds(0, 0, width, height);
 
