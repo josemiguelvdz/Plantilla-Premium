@@ -1,7 +1,5 @@
-import Star from './star.js';
 /**
- * Clase que representa el jugador del juego. El jugador se mueve por el mundo usando los cursores.
- * También almacena la puntuación o número de estrellas que ha recogido hasta el momento.
+ * Clase que representa el jugador del juego.
  */
 export default class Player extends Phaser.GameObjects.Sprite {
   
@@ -16,14 +14,25 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.score = 0;
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
+
     // Queremos que el jugador no se salga de los límites del mundo
     this.body.setCollideWorldBounds();
+
+    // Parámetros player
     this.speed = 300;
     this.jumpSpeed = -400;
+
     // Esta label es la UI en la que pondremos la puntuación del jugador
     this.label = this.scene.add.text(10, 10, "");
-    this.cursors = this.scene.input.keyboard.createCursorKeys();
-    this.updateScore();
+
+    // this.updateScore();
+
+    // Movimiento
+    this.left=this.scene.input.keyboard.addKey('A');
+    this.jump=this.scene.input.keyboard.addKey('W');
+    this.right=this.scene.input.keyboard.addKey('D');
+
+    // this.cursors = this.scene.input.keyboard.createCursorKeys(); POR SI QUIERES MOVERTE CON EL CURSOR
   }
 
   /**
@@ -44,24 +53,36 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
   /**
    * Métodos preUpdate de Phaser. En este caso solo se encarga del movimiento del jugador.
-   * Como se puede ver, no se tratan las colisiones con las estrellas, ya que estas colisiones 
-   * ya son gestionadas por la estrella (no gestionar las colisiones dos veces)
-   * @override
    */
   preUpdate(t,dt) {
     super.preUpdate(t,dt);
-    if (this.cursors.up.isDown && this.body.onFloor()) {
+
+    // Movimiento del personaje
+    if(this.jump.isDown && this.body.onFloor()){
       this.body.setVelocityY(this.jumpSpeed);
     }
-    if (this.cursors.left.isDown) {
+    if (this.left.isDown) {
       this.body.setVelocityX(-this.speed);
     }
-    else if (this.cursors.right.isDown) {
+    else if (this.right.isDown) {
       this.body.setVelocityX(this.speed);
     }
-    else {
-      this.body.setVelocityX(0);
-    }
+    else this.body.setVelocityX(0);
+
+
+    // POR SI QUIERES MOVERTE CON EL CURSOR
+    // if (this.cursors.up.isDown && this.body.onFloor()) {
+    //   this.body.setVelocityY(this.jumpSpeed);
+    // }
+    // if (this.cursors.left.isDown) {
+    //   this.body.setVelocityX(-this.speed);
+    // }
+    // else if (this.cursors.right.isDown) {
+    //   this.body.setVelocityX(this.speed);
+    // }
+    // else {
+    //   this.body.setVelocityX(0);
+    // }
   }
   
 }
