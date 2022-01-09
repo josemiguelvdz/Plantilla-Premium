@@ -93,5 +93,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
     //   this.body.setVelocityX(0);
     // }
   }
+
+  // Sirve para actualizar la UI
+  point(){
+    this.lifes++;
+    this.updateScore();
+  }
   
 }

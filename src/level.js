@@ -79,4 +79,19 @@ export default class Level extends Phaser.Scene {
 
   }
 
+  // Tema Zonas
+  createZone()
+  {
+    this.zone = this.add.zone(this.scale.width, this.scale.height/2, 64, this.scale.height);
+    this.physics.world.enable(this.zone);
+    this.zone.body.setAllowGravity(false);
+    this.zone.body.setImmovable(true);
+  }
+
+  // Tema grupos - cuidado con los bugs
+  createGroups(){
+    // this.enemies = this.physics.add.group();
+
+  }
+
 }

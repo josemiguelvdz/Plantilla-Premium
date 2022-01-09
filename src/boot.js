@@ -15,6 +15,9 @@ export default class Boot extends Phaser.Scene {
     this.load.image('platform', 'platform.png');
     this.load.image('player', 'player.png');
     this.load.image('button', 'button.png')
+
+    // this.load.spritesheet('player','playerAnim.png',{frameWidth:64,frameHeight:64}); - SPRITESHEET
+    // this.load.spritesheet('jump','jumpAnim.png',{frameWidth:64,frameHeight:64});
   }
 
   /**

@@ -24,7 +24,7 @@ export default class Level extends Phaser.Scene {
     this.button1.on('pointerdown', () => {
       if(!this.down){
         this.down = true;
-        this.scene.start('level',  {});
+        this.scene.start('level',  {}); // pasar data entre escenas
       }
     });
   }
